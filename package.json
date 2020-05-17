@@ -1,0 +1,21 @@
+{
+  "name": "sql-query-json",
+  "version": "0.1.0",
+  "description": "A package to query JSON data using SQL",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yashshah1/sql-query-json.git"
+  },
+  "author": "Yash Shah",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yashshah1/sql-query-json/issues"
+  },
+  "homepage": "https://github.com/yashshah1/sql-query-json#readme"
+}
