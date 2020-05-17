@@ -67,6 +67,10 @@ Ideally is structured data
 
 Could be dealt with how NoSQL databases deal with query strings when a particular key is not found - ignore it. But this is meant to be a configurable option.
 
+# Contributing
+
+Fork and open a PR against the dev branch
+
 # Roadmap
 
 - v0.1.0 - select with orderby, where, limit
