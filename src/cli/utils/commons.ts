@@ -1,8 +1,7 @@
-export function deepCompare(obj1: any, obj2: any) {
-  var leftChain: unknown[], rightChain: unknown[];
+export function deepCompare(obj1: any, obj2: any): boolean {
+  let leftChain: unknown[], rightChain: unknown[];
 
-  function compare2Objects(x: any, y: any) {
-    var p;
+  function compare2Objects(x: any, y: any): boolean {
     if (isNaN(x) && isNaN(y) && typeof x === 'number' && typeof y === 'number')
       return true;
 
@@ -18,12 +17,12 @@ export function deepCompare(obj1: any, obj2: any) {
 
     if (leftChain.indexOf(x) > -1 || rightChain.indexOf(y) > -1) return false;
 
-    for (p in y) {
+    for (const p in y) {
       if (y.hasOwnProperty(p) !== x.hasOwnProperty(p)) return false;
       else if (typeof y[p] !== typeof x[p]) return false;
     }
 
-    for (p in x) {
+    for (const p in x) {
       if (y.hasOwnProperty(p) !== x.hasOwnProperty(p)) return false;
       else if (typeof y[p] !== typeof x[p]) return false;
 

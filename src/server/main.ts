@@ -1,3 +1,3 @@
-function handler(req, res, next) {
+function handler(req, res, next): void {
   return;
 }

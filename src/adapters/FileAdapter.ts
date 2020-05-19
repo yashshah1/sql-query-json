@@ -2,7 +2,6 @@ import fs from 'graceful-fs';
 import path from 'path';
 import BaseAdapter from './BaseAdapter';
 import { MakeshiftJSONInterface } from './AdapterInterfaces';
-import { runInThisContext } from 'vm';
 
 class FileAdapter extends BaseAdapter {
   private _path: string;

@@ -33,7 +33,7 @@ function main(args: CLAInterface): void {
       app = createApp();
       app.set('db', db);
 
-      const server = app.listen(args.port, args.host);
+      app.listen(args.port, args.host);
 
       (process as NodeJS.EventEmitter).on('uncaughtException', e => {
         if (e.errno === 'EADDRINUSE') {
