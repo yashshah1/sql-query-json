@@ -1,3 +1,7 @@
-// This is where the main code should go
+import express from 'express';
 
-export default undefined;
+export function create() {
+  const app = express();
+  app.use(express.urlencoded({ extended: true }));
+  return app.set('json spaces', 2);
+}

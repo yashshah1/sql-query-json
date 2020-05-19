@@ -1,6 +1,6 @@
+#! /usr/bin/env node
 import yargs from 'yargs';
 import main from './main';
-import { version } from '../../package.json';
 
 // https://github.com/yargs/yargs/blob/master/docs/advanced.md#yargs-parsing-configuration
 const argv = yargs
@@ -22,6 +22,5 @@ const argv = yargs
     },
   })
   .boolean('watch')
-  .version(version).argv;
-
+  .version(process.env.npm_package_version as string).argv;
 main(argv);

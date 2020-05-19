@@ -1,32 +1,28 @@
 import fs from 'fs';
 import chalk from 'chalk';
-import FileAsync from 'lowdb/adapters/FileAsync';
-import Memory from 'lowdb/adapters/Memory';
-import low from 'lowdb';
 import axios from 'axios';
 
 import * as is from './is';
+import type BaseAdapter from '../../adapters/BaseAdapter';
+import FileAdapter from '../../adapters/FileAdapter';
+import MemoryAdapter from '../../adapters/MemoryAdapter';
 
-export default function main(source: string): Promise<unknown> {
+function get(source: string): Promise<BaseAdapter> {
   return new Promise((resolve, reject) => {
     if (is.FILE(source)) {
       if (!fs.existsSync(source)) {
-        console.log(chalk.red(`${source} does not exist`));
-        return reject('Error reading file');
+        console.log(chalk.yellow('File does not exist :('));
       }
-      resolve(low(new FileAsync(source)));
+      resolve(FileAdapter.getInstance(source));
     } else if (is.URL(source)) {
-      console.log(
-        chalk.yellow(
-          'Source to watch is a URL, Write operations will not reflect any changes',
-        ),
-      );
       axios
         .get(source)
-        .then(({ data }) => resolve(low(new Memory(data))))
+        .then(res => resolve(new MemoryAdapter(res.data)))
         .catch(err => reject(err));
     } else {
-      reject(`Invalid Source ${source}`);
+      reject('Unsupported source');
     }
   });
 }
+
+export default get;
