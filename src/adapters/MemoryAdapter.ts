@@ -10,6 +10,9 @@ class MemoryAdapter extends BaseAdapter {
   read(): MakeshiftJSONInterface {
     return this._data;
   }
+  get(): MakeshiftJSONInterface {
+    return this._data;
+  }
   write(data: MakeshiftJSONInterface): void {
     this._data = data;
   }

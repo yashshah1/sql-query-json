@@ -7,7 +7,6 @@ import * as is from './utils/is';
 import { create as createApp } from '../server';
 import { deepCompare } from './utils/commons';
 import BaseAdapter from '../adapters/BaseAdapter';
-import FileAdapter from '../adapters/FileAdapter';
 
 interface CLAInterface {
   [x: string]: unknown;
@@ -19,8 +18,9 @@ interface CLAInterface {
 }
 
 function main(args: CLAInterface): void {
-  let app;
+  let app: any;
   let dataBase: BaseAdapter;
+  let server;
   const source = args._[0];
 
   console.log(chalk.red('MAJORRRR WIP, Will break without a warning'));
@@ -32,8 +32,9 @@ function main(args: CLAInterface): void {
 
       app = createApp();
       app.set('db', db);
-
-      app.listen(args.port, args.host);
+      dataBase = db;
+      console.log(app.get('db'));
+      server = app.listen(args.port, args.host);
 
       (process as NodeJS.EventEmitter).on('uncaughtException', e => {
         if (e.errno === 'EADDRINUSE') {
@@ -46,6 +47,7 @@ function main(args: CLAInterface): void {
 https://github.com/yashshah1/sql-query-json/issues`,
             ),
           );
+          console.log(e);
           process.exit(1);
         }
       });
@@ -69,7 +71,9 @@ https://github.com/yashshah1/sql-query-json/issues`,
               }
               const isSame = deepCompare(obj, dataBase);
               if (!isSame) {
-                FileAdapter.getInstance(source).read();
+                app.get('db').read();
+                console.log('Reloaded');
+                console.log(app.get('db').get());
               }
             }
           }

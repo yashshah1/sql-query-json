@@ -38,7 +38,9 @@ class FileAdapter extends BaseAdapter {
       throw 'File does not exist';
     }
   }
-
+  get(): MakeshiftJSONInterface {
+    return this._data;
+  }
   write(data: MakeshiftJSONInterface | string): void {
     fs.writeFileSync(
       this._path,

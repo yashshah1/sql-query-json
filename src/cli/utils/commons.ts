@@ -1,3 +1,7 @@
+/**
+ * Designed to work only if the object is an output of JSON.parse(obj)
+ * So Only allowed datatypes for value are: number, string, boolean, object and null
+ */
 export function deepCompare(obj1: any, obj2: any): boolean {
   let leftChain: unknown[], rightChain: unknown[];
 
