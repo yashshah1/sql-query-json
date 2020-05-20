@@ -4,30 +4,30 @@ MAJOR WIP - Aims to be a library that can query data from JSON files using SQL<b
 This is a shame of a README, will update this as time goes.<br />
 <b>This is not what this will be called eventually <i>HOPEFULLY</i></b>
 
-# Motivation
+## Motivation
 
 If you have to build an application that uses SQL in production, you need an SQL db set up locally
 
 This is fine if you've used the stack before. But there are cases where minor issues arise like difference in Engine DBs, charsets, MySQL vs MariaDB.
 
-## Another benefit
+### Another benefit
 
 JSON data is just prettier looking (both absolutely and relatively when compared to SQL data) <br />
 
-## Painpoint
+### Painpoint
 
 Generally there exist tools to export SQL data to JSON, but we can't usually manipulate the exported data using SQL. <br />
 
-# Inspiration
+## Inspiration
 
 - I absolutely love [json-server](https://www.npmjs.com/package/json-server) and how it so seamlessly exposes a REST API given any JSON file.
 - However there is no way to work with the data with SQL queries, and that's what this plans to do (lol)
 
-# What this plans to do
+## What this plans to do
 
 Once SQL data has been exported to JSON, we want to be able to manipulate the data using SQL queries. <br />
 
-## How?
+### How?
 
 (Targets to be) as simple as json-server
 
@@ -37,11 +37,11 @@ $ sql-query-json --watch file.json
 
 And this should be enough to start it up
 
-## How will I query?
+### How will I query?
 
 Just how GraphQL servers work, they expose an endpoint where query strings can be sent and it will return the response based on the query.
 
-# Data format
+## Data format
 
 Ideally is structured data
 
@@ -63,15 +63,15 @@ Ideally is structured data
 }
 ```
 
-## What about NoSQL?
+### What about NoSQL?
 
 Could be dealt with how NoSQL databases deal with query strings when a particular key is not found - ignore it. But this is meant to be a configurable option.
 
-# Contributing
+## Contributing
 
 Fork and open a PR against the dev branch
 
-# Roadmap
+## Roadmap
 
 - v0.1.0 - select with orderby, where, limit
 - v0.2.0 - update, delete
