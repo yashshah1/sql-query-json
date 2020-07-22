@@ -14,7 +14,7 @@ const argv = yargs
     host: {
       alias: 'H',
       description: 'Host',
-      default: 'localhost',
+      default: '0.0.0.0',
     },
     watch: {
       alias: 'W',
