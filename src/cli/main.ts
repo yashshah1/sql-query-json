@@ -69,7 +69,7 @@ function main(args: CLAInterface): void {
         }
         const isSame = deepCompare(obj, dataBase);
         if (!isSame) {
-          console.log(app.get('db').read());
+          app.get('db').read();
           console.log('Reloaded');
         }
       });
