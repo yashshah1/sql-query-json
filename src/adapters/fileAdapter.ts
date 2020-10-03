@@ -1,22 +1,31 @@
 import fs from 'graceful-fs';
 import path from 'path';
-import BaseAdapter from './BaseAdapter';
-import { MakeshiftJSONInterface } from './AdapterInterfaces';
+import BaseAdapter from './baseAdapter';
+import {
+  MakeshiftJSONInterface,
+  BaseAdapterOptionsInterface,
+} from './adapterInterfaces';
 
 class FileAdapter extends BaseAdapter {
   private _path: string;
   private _data: MakeshiftJSONInterface;
   private static instance: FileAdapter;
 
-  private constructor(source: string) {
-    super(source);
+  private constructor(
+    source: string,
+    options?: Partial<BaseAdapterOptionsInterface>,
+  ) {
+    super(source, options);
     this._path = path.resolve(this._source as string);
     this._data = this.read();
   }
 
-  static getInstance(source: string): FileAdapter {
+  static getInstance(
+    source: string,
+    options?: Partial<BaseAdapterOptionsInterface>,
+  ): FileAdapter {
     if (!FileAdapter.instance) {
-      FileAdapter.instance = new FileAdapter(source);
+      FileAdapter.instance = new FileAdapter(source, options);
     }
     return FileAdapter.instance;
   }
