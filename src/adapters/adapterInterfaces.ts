@@ -10,5 +10,5 @@ export interface MakeshiftJSONInterface {
 
 export interface BaseAdapterOptionsInterface {
   serialize: (obj: MakeshiftJSONInterface) => string;
-  deserialize: (s: string) => MakeshiftJSONInterface;
+  deserialize: (s: string | MakeshiftJSONInterface) => MakeshiftJSONInterface;
 }

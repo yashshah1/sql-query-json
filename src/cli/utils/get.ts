@@ -3,11 +3,10 @@ import chalk from 'chalk';
 import axios from 'axios';
 
 import * as is from './is';
-import type BaseAdapter from '../../adapters/BaseAdapter';
-import FileAdapter from '../../adapters/FileAdapter';
-import MemoryAdapter from '../../adapters/MemoryAdapter';
+import FileAdapter from '../../adapters/fileAdapter';
+import MemoryAdapter from '../../adapters/memoryAdapter';
 
-function get(source: string): Promise<BaseAdapter> {
+function get(source: string): Promise<FileAdapter | MemoryAdapter> {
   return new Promise((resolve, reject) => {
     if (is.FILE(source)) {
       if (!fs.existsSync(source)) {

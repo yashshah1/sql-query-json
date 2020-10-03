@@ -1,9 +1,16 @@
-import BaseAdapter from './BaseAdapter';
-import { MakeshiftJSONInterface } from './AdapterInterfaces';
+import BaseAdapter from './baseAdapter';
+import {
+  MakeshiftJSONInterface,
+  BaseAdapterOptionsInterface,
+} from './adapterInterfaces';
+
 class MemoryAdapter extends BaseAdapter {
   private _data: MakeshiftJSONInterface;
-  constructor(source: MakeshiftJSONInterface | string) {
-    super(source);
+  constructor(
+    source: MakeshiftJSONInterface | string,
+    options?: Partial<BaseAdapterOptionsInterface>,
+  ) {
+    super(source, options);
     this._data =
       typeof source === 'string' ? this._deserialize(source) : source;
   }
