@@ -1,8 +1,15 @@
-export function deepCompare(obj1: any, obj2: any): boolean {
+import { MakeshiftJSONInterface } from '../../adapters/adapterInterfaces';
+
+type ArgType = MakeshiftJSONInterface | number | string;
+
+export function deepCompare(
+  obj1: MakeshiftJSONInterface,
+  obj2: MakeshiftJSONInterface,
+): boolean {
   let leftChain: unknown[], rightChain: unknown[];
 
-  function compare2Objects(x: any, y: any): boolean {
-    if (isNaN(x) && isNaN(y) && typeof x === 'number' && typeof y === 'number')
+  function compare2Objects(x: ArgType, y: ArgType): boolean {
+    if (typeof x === 'number' && typeof y === 'number' && isNaN(x) && isNaN(y))
       return true;
 
     if (x === y) return true;
@@ -31,7 +38,13 @@ export function deepCompare(obj1: any, obj2: any): boolean {
           leftChain.push(x);
           rightChain.push(y);
 
-          if (!compare2Objects(x[p], y[p])) return false;
+          if (
+            !compare2Objects(
+              x[p] as MakeshiftJSONInterface,
+              y[p] as MakeshiftJSONInterface,
+            )
+          )
+            return false;
 
           leftChain.pop();
           rightChain.pop();
